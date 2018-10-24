@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+
+  environment {
+    registry = 'https://registry.hub.docker.com'
+    image = 'veek/alpine-php'
+    registryCredential = 'dockerhub'
+  }
+
+  stages {
+    stage('building PHP 7.2') {
+      steps {
+        dir('7.2') {
+          script {
+            docker.withRegistry(registry, registryCredential) {
+              def proxyImage = docker.build(image + ':7.2')
+              proxyImage.push()
+            }
+          }
+        }
+      }
+    }
+    stage('cleaning') {
+      steps {
+        cleanWs deleteDirs: true
+      }
+    }
+  }
+}
