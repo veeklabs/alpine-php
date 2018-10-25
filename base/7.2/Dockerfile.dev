@@ -20,15 +20,16 @@ RUN apk add -U --no-cache \
     && rm -rf /var/cache/apk/* \
 
     && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
-    && echo "${USER}:${PASSWORD}" | chpasswd \
+    && echo "${USER}:${PA`SSWORD}" | chpasswd \
     && ssh-keygen -A \
 
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
-    && composer global require "hirak/prestissimo:0.3.7" \
+    && composer global require "hirak/prestissimo:0.3.7"
+    #\
 
-    && wget https://git.io/psysh \
-    && chmod +x psysh \
-    && mv psysh /usr/bin/psysh
+    #&& wget https://git.io/psysh \
+    #&& chmod +x psysh \
+    #&& mv psysh /usr/bin/psysh
 
 ADD devfs /
 
