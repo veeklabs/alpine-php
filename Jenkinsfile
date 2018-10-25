@@ -8,12 +8,25 @@ pipeline {
   }
 
   stages {
+    stage('building PHP 7.2') {
+      steps {
+        dir('base/7.2') {
+          script {
+            docker.withRegistry(registry, registryCredential) {
+              def base = docker.build(image + ':7.2')
+              base.push()
+            }
+          }
+        }
+      }
+    }
+
     stage('building PHP 7.2-dev') {
       steps {
         dir('base/7.2') {
           script {
             docker.withRegistry(registry, registryCredential) {
-              def base = docker.build(image + ':7.2-dev')
+              def base = docker.build(image + ':7.2-dev', "-f Dockerfile.dev .")
               base.push()
             }
           }

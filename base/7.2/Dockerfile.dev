@@ -1,4 +1,4 @@
-FROM jorge07/alpine-php:7.2
+FROM veek/alpine-php:7.2
 
 ARG USER=root
 ARG PASSWORD=root
