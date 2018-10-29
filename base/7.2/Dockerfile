@@ -54,3 +54,12 @@ CMD ["/usr/sbin/php-fpm7", "-R", "--nodaemonize"]
 EXPOSE 9000
 
 WORKDIR /app
+
+# ./wait-for is a script to wait for another service to become available
+# you can use it inside a docker-compose, for instance, overriding the defalt
+# command.
+#     command: sh -c '/etc/wait-for db:5432 -- npm start'
+#
+# https://github.com/eficode/wait-for
+RUN wget https://raw.githubusercontent.com/eficode/wait-for/master/wait-for -O /etc/wait-for \
+  && chmod 777 /etc/wait-for
