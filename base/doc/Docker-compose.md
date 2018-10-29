@@ -6,7 +6,7 @@ Minimal Configuration:
 version: '2'
 services:
   fpm:
-      image: jorge07/alpine-php:7-dev
+      image: veek/alpine-php:7-dev
       ports:
         - "2244:22"
         - "9000:9000"
@@ -23,11 +23,11 @@ You can optionally add ENV params:
 ```
 # Nginx integration
 
-This example is based on a [Symfony](http://symfony.com/) project but can be what you want. Full example [here](https://github.com/jorge07/ddd-playground)
+This example is based on a [Symfony](http://symfony.com/) project but can be what you want. Full example [here](https://github.com/veek/ddd-playground)
 
 Project structure:
 
-![Tree](https://raw.githubusercontent.com/jorge07/alpine-php/master/doc/images/folder-structure.png)
+![Tree](https://raw.githubusercontent.com/veek/alpine-php/master/doc/images/folder-structure.png)
 
 *etc/infrastructure/dev/nginx/demo.conf*
 
@@ -72,7 +72,7 @@ server {
        - "$PWD/web:/app/web"
 
    fpm:
-     image: jorge07/alpine-php:7-dev
+     image: veek/alpine-php:7-dev
      ports:
        - "2244:22"
        - "9000:9000"

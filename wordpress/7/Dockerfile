@@ -1,4 +1,4 @@
-FROM jorge07/alpine-php:7
+FROM veek/alpine-php:7
 
 RUN apk add -U php7-mysqli@cast
 

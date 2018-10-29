@@ -1,13 +1,13 @@
 # Production artifact pipeline
 
-This pipeline its just an example, for a more accurate approach see [here](https://github.com/jorge07/ddd-playground)
+This pipeline its just an example, for a more accurate approach see [here](https://github.com/veek/ddd-playground)
 
 ### Using Multi stage build
 
 **Dockerfile.build**
 
 ```Dockerfile
-FROM jorge07/alpine-php:7.1-dev-sf as builder
+FROM veek/alpine-php:7.1-dev-sf as builder
 
 WORKDIR /api
 
@@ -29,7 +29,7 @@ RUN composer run-script post-install-cmd \
     && rm -rf /api/web/app_dev.php \
     && rm -rf /api/web/config.php
 
-FROM jorge07/alpine-php:7.1
+FROM veek/alpine-php:7.1
 
 ENV SYMFONY_ENV prod
 
@@ -47,12 +47,12 @@ RUN rm -rf /app/var/cache/* && php /app/bin/console c:c
 
 ### Build environment
 
-I recommend build the artifact in the `jorge07/alpine-php:*-dev` image.
+I recommend build the artifact in the `veek/alpine-php:*-dev` image.
 
 **Dockerfile.build**
 
 ```Dockerfile
-FROM jorge07/alpine-php:7-dev
+FROM veek/alpine-php:7-dev
 
 ENV SYMFONY_ENV prod
 
@@ -110,7 +110,7 @@ Extend Image. Add you PHP configuration and copy the entire artifact.
 *Dockerfile.prod*
 
 ```Dockerfile
-FROM jorge07/alpine-php:7
+FROM veek/alpine-php:7
 
 COPY config/php/php.ini /etc/php7/conf.d/50-setting.ini
 COPY config/php/php-fpm.conf /etc/php7/php-fpm.conf

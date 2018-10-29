@@ -1,4 +1,4 @@
-FROM jorge07/alpine-php:5.6-dev
+FROM veek/alpine-php:5.6-dev
 
 COPY config/env/symfony /tmp/profile
 
