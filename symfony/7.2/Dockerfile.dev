@@ -3,6 +3,7 @@ FROM veek/alpine-php:7.2-dev
 COPY config/env/symfony /tmp/profile
 
 RUN apk add -U --no-cache \
-        php7-sqlite3@cast
+        php7-sqlite3@cast \
+        php7-pdo_sqlite@cast
 
 RUN cat /tmp/profile >> /etc/profile && rm -rf /tmp/profile
