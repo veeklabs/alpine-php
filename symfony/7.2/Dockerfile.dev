@@ -2,7 +2,7 @@ FROM veek/alpine-php:7.2-dev
 
 COPY config/env/symfony /tmp/profile
 
-RUN docker-php-ext-install pdo_sqlite \
-    && docker-php-ext-enable pdo_sqlite
+RUN apk add -U --no-cache \
+        php7-sqlite3@cast
 
 RUN cat /tmp/profile >> /etc/profile && rm -rf /tmp/profile
